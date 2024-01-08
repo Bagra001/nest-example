@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CreditCardService } from './creditcard.service';
 
 describe('CreditCardService', () => {
-  let service: CreditcardService;
+  let service: CreditCardService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
