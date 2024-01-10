@@ -1,15 +1,24 @@
 import { Injectable } from '@nestjs/common';
+import { AccountDto } from '../dto/account.dto';
+import { AccountService } from '../service/account.service';
 
 @Injectable()
 export class CurrentAccountService {
-  private balance: number = 0.0;
+  private currentAccounts: AccountDto[];
 
-  getBalance(): number {
-    return this.balance;
+  constructor(private accountService: AccountService) {}
+
+  getBalance(account: string): number {
+    return this.accountService.getAccount(account, this.currentAccounts)
+      .balance;
   }
 
-  deposit(amount: number): number {
-    this.balance += amount;
-    return this.balance;
+  deposit(amount: number, account: string): number {
+    const depositAccount = this.accountService.getAccount(
+      account,
+      this.currentAccounts,
+    );
+    depositAccount.balance += amount;
+    return depositAccount.balance;
   }
 }

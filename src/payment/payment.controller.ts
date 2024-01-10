@@ -15,13 +15,16 @@ import { PaymentType } from './dto/paymenttype';
 export class PaymentController {
   paymentHandler = {
     [PaymentType.PAYPAL]: {
-      deposit: (amount) => this.paypalService.deposit(amount),
+      deposit: (amount: number, account: string) =>
+        this.paypalService.deposit(amount, account),
     },
     [PaymentType.CURRENT_ACCOUNT]: {
-      deposit: (amount) => this.currentAccountService.deposit(amount),
+      deposit: (amount: number, account: string) =>
+        this.currentAccountService.deposit(amount, account),
     },
     [PaymentType.CREDIT_CARD]: {
-      deposit: (amount) => this.creditCardService.deposit(amount),
+      deposit: (amount: number, account: string) =>
+        this.creditCardService.deposit(amount, account),
     },
     default: () => {
       throw new BadRequestException('Invalid payment-type');
@@ -35,18 +38,21 @@ export class PaymentController {
   ) {}
 
   @Get('/balance')
-  balance(): string {
+  balance(account: string): string {
     return `Balance: ${
-      this.paypalService.getBalance() +
-      this.currentAccountService.getBalance() +
-      this.creditCardService.getBalance()
+      this.paypalService.getBalance(account) +
+      this.currentAccountService.getBalance(account) +
+      this.creditCardService.getBalance(account)
     } €`;
   }
 
   @Put('/deposit')
   deposit(@Body() payment: PaymentDto): void {
     this.paymentHandler[payment.paymentType]
-      ? this.paymentHandler[payment.paymentType].deposit(payment.amount)
+      ? this.paymentHandler[payment.paymentType].deposit(
+          payment.amount,
+          payment.account,
+        )
       : this.paymentHandler.default();
   }
 }

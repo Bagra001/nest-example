@@ -1,0 +1,5 @@
+export enum AcountType {
+  PAYPAL = 'PAYPAL',
+  CREDIT_CARD = 'CREDIT_CARD',
+  CURRENT_ACCOUNT = 'CURRENT_ACCOUNT',
+}
