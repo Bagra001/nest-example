@@ -10,7 +10,8 @@
 
 ## Description
 
-This App contains some example NestJS implementations (controllers, services etc.).
+This App contains some example NestJS implementations (controllers, services etc.). <br/>
+All examples are seperate modules which can be loaded in **app.module.ts**
 
 ## Installation
 
