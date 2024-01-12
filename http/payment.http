@@ -1,13 +1,27 @@
+GET http://localhost:8080/account
+
+###
+
 GET http://localhost:8080/account/{{accountId}}/balance
 Accept: application/json
 
 ###
-POST http://localhost:8080/account/{{acountId}}/deposit
+
+POST http://localhost:8080/account
+Accept: application/json
+Content-Type: application/json;charset=UTF-8
+
+{
+  "accountType": "PAYPAL"
+}
+
+###
+PATCH http://localhost:8080/account/{{accountId}}/deposit
 Accept: application/json
 Content-Type: application/json;charset=UTF-8
 
 {
   "paymentType": "PAYPAL",
   "amount": 100,
-  "account": "123456789"
+  "account": "4f0dee83-f616-445d-a430-96a2d6af5d85"
 }
