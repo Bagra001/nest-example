@@ -1,0 +1,36 @@
+GET http://localhost:3000/resource
+###
+
+GET http://localhost:3000/resource/byQuery?value=someThing
+###
+
+GET http://localhost:3000/resource/123
+###
+
+GET http://localhost:3000/resource/throw/error
+###
+
+GET http://localhost:3000/resource/redirect/to/resource
+###
+
+POST http://localhost:3000/resource
+Content-Type: application/json;charset=UTF-8
+
+{
+  "id": 23,
+  "name": "resourceName"
+}
+###
+
+PUT http://localhost:3000/resource/123
+Content-Type: application/json;charset=UTF-8
+
+{
+  "id": 23,
+  "name": "resourceName"
+}
+###
+
+DELETE http://localhost:3000/resource/123
+###
+
