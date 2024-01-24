@@ -10,7 +10,8 @@ import {
   Post,
   Put,
   Query,
-  Redirect, UsePipes,
+  Redirect,
+  UsePipes,
 } from '@nestjs/common';
 import { ResourceDto } from './dto/resource.dto';
 
