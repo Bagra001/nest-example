@@ -1,12 +1,13 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
   Get,
   HttpCode,
-  HttpException,
   HttpStatus,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   Query,
@@ -29,7 +30,7 @@ export class ExampleController {
   }
 
   @Get(':id')
-  getResourceById(@Param('id') id: string): string {
+  getResourceById(@Param('id', new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) id: string): string {
     return `You called GET resource with ${id}`;
   }
 
@@ -38,17 +39,16 @@ export class ExampleController {
     return `You called GET resource with ${params.name}`;
   }
 
-  @UsePipes()
   @Get('/throw/error')
   throwError() {
-    throw new HttpException('Example Controller Error', HttpStatus.BAD_REQUEST);
+    throw new BadRequestException('Example Controller Error'); // handled by nestjs
   }
 
   @Get('/redirect/to/resource')
   @Redirect('/resource', 301)
   redirectToGetResource() {}
 
-  @Post() // add pipe to body
+  @Post() // possible to add pipe to body with @Body(new ValidationPipe())
   createResource(@Body() resource: ResourceDto): string {
     return `resource ${JSON.stringify(resource)} created`;
   }
@@ -60,6 +60,7 @@ export class ExampleController {
     )}`;
   }
 
+  @UsePipes(new ParseIntPipe())
   @Delete(':id')
   remove(@Param('id') id: string) {
     return `This action removes a resource with id ${id}`;
