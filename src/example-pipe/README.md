@@ -11,6 +11,7 @@
 ## Description
 
 This is a module which contains an example implementation of pipes, which uses *class-validator* and *class-transformer*.<br/>
-For class-trasformer decorators look <a href='https://github.com/typestack/class-validator?tab=readme-ov-file#validation-decorators'>here</a>
+For class-trasformer decorators for *class-validator* look <a href='https://github.com/typestack/class-validator?tab=readme-ov-file#validation-decorators'>here</a>.<br/>
+There is no example for *class-transformer* in this module. For more info look <a href='https://github.com/nestjs/class-transformer'>here</a>.<br/>
 It contains a module which can be imported in **app.module.ts** and test.
 
