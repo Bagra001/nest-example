@@ -30,7 +30,13 @@ export class ExampleController {
   }
 
   @Get(':id')
-  getResourceById(@Param('id', new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) id: string): string {
+  getResourceById(
+    @Param(
+      'id',
+      new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
+    )
+    id: string,
+  ): string {
     return `You called GET resource with ${id}`;
   }
 
