@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectModel } from '@nestjs/mongoose';
 import type { Model } from 'mongoose';
 
@@ -10,7 +10,13 @@ export class AppRepository {
   constructor(@InjectModel(User.name) private readonly userModel: Model<User>) {}
 
   async createUser(user: UserDto): Promise<UserDocument> {
-    return this.userModel.create(user);
+    const createduser = await this.userModel.create(user);
+
+    if(!createduser) {
+      throw new BadRequestException('User could not be created');
+    }
+
+    return createduser;
   }
 
   async deleteUser(userId: string): Promise<UserDocument> {

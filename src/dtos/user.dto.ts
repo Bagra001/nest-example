@@ -22,5 +22,5 @@ export class UserDto {
   @IsDate()
   @Transform(({ value }) => new Date(value))
   @MinDate(new Date())
-  birthdayDate: string;
+  birthday: string;
 }

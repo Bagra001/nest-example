@@ -1,6 +1,7 @@
 import { Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { IsNotEmpty, IsString, IsStrongPassword } from "class-validator";
+import { IsDate, IsNotEmpty, IsString, IsStrongPassword, MinDate } from "class-validator";
+import { Transform } from "class-transformer";
 
 @Schema({ timestamps: true })
 export class User {
@@ -20,6 +21,11 @@ export class User {
   @IsString()
   @IsNotEmpty()
   email: string;
+
+  @IsDate()
+  @Transform(({ value }) => new Date(value))
+  @MinDate(new Date())
+  birthday: string;
 }
 
 export type UserDocument = HydratedDocument<User>;
