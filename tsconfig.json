@@ -1,21 +1,29 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "declaration": true,
+    "target": "es6",
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ],
     "removeComments": true,
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
     "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "strict": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false,
+    "outDir": "build"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "types.d.ts"
+  ]
 }

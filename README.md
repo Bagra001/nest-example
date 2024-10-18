@@ -1,54 +1,98 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# nest-example
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Sample microservice description.
 
-  <p align="center">This example uses the progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
+## Table of Contents
 
-## Description
+- [Features](#features)
+- [Development](#development)
+- [Service Dependencies](#service-dependencies)
+- [Kafka](#kafka)
+- [Testing](#testing)
+- [API](#api)
+- [Links](#links)
 
-This App contains some example NestJS implementations (controllers, services etc.). <br/>
-All examples are separate modules which can be loaded in **app.module.ts**
+## Features
+* A
+* List
+* Of
+* Features
 
-## Installation
+## Development
 
-```bash
-$ npm install
-```
+Please use at least **Node.js version 14.5.1** from the software center for running a local instance of the service.
 
-## Running the app
+### Environment variables
+We use [dotenv](https://www.npmjs.com/package/dotenv) to load environment variables. The `npm run start:dev` script starts using
+the `localhost` environment, so just remove .tmpl from the ".localhost.env.tmpl".
 
-```bash
-# development
-$ npm run start
+### Installation (local bootstrap)
 
-# watch mode
-$ npm run start:dev
+Prepare project (download certifactes for example)
+`npm run cert`
 
-# production mode
-$ npm run start:prod
-```
+You can then install all necessary NPM dependencies using
+`npm i`
 
-## Test
+### Run locally
+`npm run dev`
 
-```bash
-# unit tests
-$ npm run test
+## Service Dependencies
 
-# e2e tests
-$ npm run test:e2e
+| Service Name |   Reasons    |   Communication Types |
+|--------------|--------------|:---------------------:|
+| Foobar       | this and that| ~~Kafka~~, ~~REST~~   |
 
-# test coverage
-$ npm run test:cov
-```
+## Kafka
 
-## Support the community
+### Consumer
+| Event Name | Consumed when? | Processed how?     |
+|------------|----------------|--------------------|
+| some-event | If this happens| Then we update that|
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Producer
+| Event Name | Produced when? |
+|------------|----------------|
+| some-event | X changed      |
+## MongoDB
+This service uses a [MongoDB](https://www.mongodb.com/de) and interfaces with the database cluster using
+the [mongodb package](https://www.npmjs.com/package/mongodb).
 
-## License
+### Collections
+| Collection Name | Related Collections     | Description |
+|-----------------|-------------------------|-------------|
+| col_a           | col_b, col_c            | ...         |
+| col_b           | col_a                   | ...         |
+| col_c           | col_a                   | ...         |
 
-Nest is [MIT licensed](LICENSE).
+## Testing
+### Run Locally
+#### Unit
+We use [jest](https://www.npmjs.com/package/jest) for unit testing
+
+`npm run test:unit`
+#### Acceptance
+We use [Cucumber.js](https://www.npmjs.com/package/@cucumber/cucumber) for acceptance testing
+
+`npm run test:acceptance`
+#### Migration
+We use [migrate-mongo](https://www.npmjs.com/package/migrate-mongo) for migrations and run the migration scripts
+in dev on a local [in-memory MongoDB](https://www.npmjs.com/package/mongodb-memory-server)
+
+`npm run test:migration`
+
+## API (_nice to have_)
+* link-to-dev-swagger
+* link-to-test-swagger
+* link-to-lt-swagger
+* link-to-prod-swagger
+
+## Links
+* Confluence
+* Jenkins
+* Deployment repository
+* [Service Manager - conversion](https://app-service-manager-prod.prod.interhyp-cloud.de/manage?namespace=conversion&drawer=open)
+* ArgoCD dev/test/lt/prod
+* Grafana Dashboards
+* APM
+* SonarQube

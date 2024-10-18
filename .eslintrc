@@ -1,0 +1,26 @@
+{
+    "extends": "@interhyp",
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "tsconfig.json"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "ignorePatterns": [
+        "src/**/*.spec.ts"
+    ],
+    "rules": {
+        "no-empty-function": ["error", { "allow": ["constructors"] }],
+        "no-console": "warn",
+        "keyword-spacing": "error",
+        "no-useless-constructor": "off",
+        "new-cap": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "jest/no-disabled-tests": "off"
+    }
+}
