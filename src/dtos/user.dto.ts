@@ -1,9 +1,11 @@
-import { IsDate, IsNotEmpty, IsString, IsStrongPassword, MinDate } from "class-validator";
+import { IsDate, IsEmail, IsNotEmpty, IsString, IsStrongPassword, MinDate } from "class-validator";
 import { Transform } from "class-transformer";
+import { Prop } from "@nestjs/mongoose";
 
 export class UserDto {
   @IsString()
   @IsNotEmpty()
+  @Prop()
   name: string;
 
   @IsStrongPassword({
@@ -13,14 +15,15 @@ export class UserDto {
     minNumbers: 1,
     minSymbols: 1,
   })
+  @Prop()
   password: string;
 
-  @IsString()
-  @IsNotEmpty()
+  @IsEmail()
+  @Prop()
   email: string;
 
-  @IsDate()
   @Transform(({ value }) => new Date(value))
-  @MinDate(new Date())
+  @IsDate()
+  @Prop()
   birthday: string;
 }
