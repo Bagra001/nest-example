@@ -1,0 +1,28 @@
+### Create User
+POST http://localhost:3000/v1/users
+Content-Type: application/json
+
+{
+  "birthday": "2000-01-01",
+  "email": "peter.griffin@test.com",
+  "name": "Peter Griffin",
+  "password": "Test123!?"
+}
+
+### Update User
+PUT http://localhost:3000/v1/users
+Content-Type: application/json
+
+{
+  "uuid": "<USER_ID_FROM_CREATION>",
+  "birthday": "2001-01-01",
+  "email": "peter.griffin@test.com",
+  "name": "Peter Griffin",
+  "password": "Test123!?"
+}
+
+### Get User
+GET http://localhost:3000/v1/users/<USER_ID_FROM_CREATION>
+
+### Delete User
+DELETE http://localhost:3000/v1/users/<USER_ID_FROM_CREATION>

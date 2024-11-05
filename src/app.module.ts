@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
+import { ExampleTypeormModule } from './example-typeorm/example.typeorm.module';
 
 @Module({
-  imports: [],
-  controllers: [],
-  providers: [],
+  imports: [ExampleTypeormModule],
 })
 export class AppModule {}

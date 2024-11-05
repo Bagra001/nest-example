@@ -2,12 +2,18 @@ import {
   IsDate,
   IsEmail,
   IsNotEmpty,
+  IsOptional,
   IsString,
   IsStrongPassword,
+  IsUUID,
 } from 'class-validator';
-import { Transform } from 'class-transformer';
+import { Exclude, Transform } from 'class-transformer';
 
 export class UserDto {
+  @IsUUID()
+  @IsOptional()
+  uuid?: string;
+
   @IsString()
   @IsNotEmpty()
   name: string;
@@ -19,12 +25,14 @@ export class UserDto {
     minNumbers: 1,
     minSymbols: 1,
   })
+  @Exclude()
   password: string;
 
   @IsEmail()
   email: string;
 
-  @Transform(({ value }) => new Date(value))
   @IsDate()
-  birthday: string;
+  @IsOptional()
+  @Transform(({ value }) => new Date(value))
+  birthday?: string;
 }

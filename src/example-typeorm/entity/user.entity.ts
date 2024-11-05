@@ -3,17 +3,20 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class UserEntity {
   @PrimaryGeneratedColumn()
-  id!: number;
+  id: number;
 
-  @Column({ type: 'string' })
+  @Column({ type: 'uuid' })
+  uuid: string;
+
+  @Column()
   name: string;
 
-  @Column({ type: 'alphanum' })
+  @Column({ type: 'varchar', length: 255 })
   password: string;
 
-  @Column({ type: 'string' })
+  @Column()
   email: string;
 
-  @Column({ type: 'date' })
-  birthday: string;
+  @Column()
+  birthday: Date;
 }

@@ -27,9 +27,11 @@
     "@nestjs/typeorm": "^10.0.2",
     "class-transformer": "^0.5.1 || for example-pipe: transform pipe",
     "class-validator": "^0.14.1 || for example-pipe: validation pipe",
-    "pg": "^8.12.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "sqlite3": "^5.1.7",
+    "typeorm": "^0.3.20",
+    "uuid": "^11.0.2"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
