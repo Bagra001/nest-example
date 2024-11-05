@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ExampleLoggerFastRedactModule } from './example-logger-fast-redact/example.logger.fast-redact.module';
+import { ExampleMongoModule } from './example-mongodb/exampleMongoModule';
 
 @Module({
-  imports: [ExampleLoggerFastRedactModule],
+  imports: [ExampleMongoModule],
   controllers: [],
   providers: [],
 })
