@@ -18,6 +18,11 @@ import { ExcludeNullInterceptor } from './interceptors/exclude.password.intercep
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Get(':id')
+  async getUser(@Param('id') userId: string): Promise<UserDto> {
+    return this.userService.getUser(userId);
+  }
+
   @Post()
   async createUser(@Body() userDto: UserDto): Promise<UserDto> {
     return this.userService.createUser(userDto);
@@ -31,10 +36,5 @@ export class UserController {
   @Put()
   async updateUser(@Body() userDto: Partial<UserDto>): Promise<UserDto> {
     return this.userService.updateUser(userDto);
-  }
-
-  @Get(':id')
-  async getUser(@Param('id') userId: string): Promise<UserDto> {
-    return this.userService.getUser(userId);
   }
 }

@@ -9,20 +9,24 @@ Content-Type: application/json
   "password": "Test123!?"
 }
 
+> {%
+  client.global.set("uuid", response.body.uuid);
+%}
+
 ### Update User
 PUT http://localhost:3000/v1/users
 Content-Type: application/json
 
 {
-  "uuid": "<USER_ID_FROM_CREATION>",
+  "uuid": "{{uuid}}",
   "birthday": "2001-01-01",
   "email": "peter.griffin@test.com",
-  "name": "Peter Griffin",
+  "name": "Peter GGGriffin",
   "password": "Test123!?"
 }
 
 ### Get User
-GET http://localhost:3000/v1/users/<USER_ID_FROM_CREATION>
+GET http://localhost:3000/v1/users/{{uuid}}
 
 ### Delete User
-DELETE http://localhost:3000/v1/users/<USER_ID_FROM_CREATION>
+DELETE http://localhost:3000/v1/users/{{uuid}}
