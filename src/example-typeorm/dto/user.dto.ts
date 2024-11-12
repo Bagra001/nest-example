@@ -34,5 +34,5 @@ export class UserDto {
   @IsDate()
   @IsOptional()
   @Transform(({ value }) => new Date(value))
-  birthday?: string;
+  birthday?: Date;
 }

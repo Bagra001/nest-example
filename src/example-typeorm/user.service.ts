@@ -15,13 +15,15 @@ export class UserService {
   ) {}
 
   async getUser(userId: string): Promise<UserDto | never> {
-    return (await this.userRepository
-      .findOneByOrFail({
-        uuid: userId,
-      })
-      .catch(() => {
-        throw new NotFoundException(`User with uuid ${userId} not found`);
-      })) as unknown as UserDto;
+    return {
+      ...(await this.userRepository
+        .findOneByOrFail({
+          uuid: userId,
+        })
+        .catch(() => {
+          throw new NotFoundException(`User with uuid ${userId} not found`);
+        })),
+    };
   }
 
   async createUser(userDto: UserDto): Promise<UserDto> {
@@ -35,12 +37,12 @@ export class UserService {
     await this.userRepository.delete({
       uuid: userId,
     });
-    return userToDelete as unknown as UserDto;
+    return userToDelete;
   }
 
-  async updateUser(userDto: Partial<UserDto>): Promise<UserDto | never> {
+  async updateUser(userDto: UserDto): Promise<UserDto> {
     await this.getUser(userDto.uuid);
     await this.userRepository.update({ uuid: userDto.uuid }, userDto);
-    return userDto as unknown as UserDto;
+    return userDto;
   }
 }

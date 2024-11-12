@@ -34,7 +34,7 @@ export class UserController {
   }
 
   @Put()
-  async updateUser(@Body() userDto: Partial<UserDto>): Promise<UserDto> {
+  async updateUser(@Body() userDto: UserDto): Promise<UserDto> {
     return this.userService.updateUser(userDto);
   }
 }

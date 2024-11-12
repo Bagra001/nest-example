@@ -1,14 +1,14 @@
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'CAMPUS_USER' })
 export class UserEntity {
   @PrimaryColumn({ type: 'uuid', length: 36 })
   uuid: string;
 
-  @Column()
+  @Column({ length: 50 })
   name: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 64 })
   password: string;
 
   @Column()
